@@ -8,22 +8,6 @@ School project during my 4th year.
 
 My first C project, originally created in 4th year and later improved before starting my Bachelor of Science in Computer Science (BSCS).
 
-## Features
-
-* Buy an item
-* Number guessing game
-* Simple calculator
-* Message repeater
-
-## Concepts Used
-
-* Variables
-* Conditionals
-* Loops
-* Switch statements
-* Functions
-* Arrays and strings
-
 ## Future Improvements
 
 * Better input handling
@@ -32,3 +16,10 @@ My first C project, originally created in 4th year and later improved before sta
 * Additional mini-games
 
 This project represents the beginning of my programming journey.
+
+# UPDATE
+Fun console program turned into an escape room
+## Features
+* What I've relearned in my July-Works repo
+## Where to find the code file?
+[Click here to view the file](EscapeRoom)
