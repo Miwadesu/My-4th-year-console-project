@@ -1,0 +1,364 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+    char code[5];
+    int choice, choice1, paintc, bedc, vasec, closetc, invc;
+    int hasScrewdriver = 0;
+    int hasKey = 0;
+    int note1Found = 0;
+    int note2Found = 0;
+    int note3Found = 0;
+    int note4Found = 0;
+    int note5Found = 0;
+    int paintingOpened = 0;
+    int caseOpened = 0;
+    int vaseChecked = 0;
+    int lampChecked = 0;
+    int closetChecked = 0;
+    int finalNoteFound = 0;
+void drawer() {
+    if (hasScrewdriver == 0) {
+        printf("\nYou checked the drawer and saw the items:\n");
+        char screw[] = "Screwdriver";
+        char *screw_ptr = screw;
+        printf("1. %s\n", screw_ptr);
+        char note2[] = "Big Note";
+        char *note2_ptr = note2;
+        printf("2. %s\n", note2_ptr);
+        printf("You took both items.\n");
+        hasScrewdriver = 1;
+        note2Found = 1;
+    }
+    else {
+        printf("\nThe drawer is empty.\n");
+    }
+}
+void paint(){
+    printf("\nYou inspect the painting.\nIt seems heavier than normal.\nThere are scratches near one corner.");
+    if (hasScrewdriver == 0) {
+        printf("\n\nSomething is holding it in place.\n");
+    }
+    else{
+        printf("\n\nUse screwdriver?\n1. Yes\n2. No\n =");
+        scanf("%d", &paintc);
+        switch (paintc){
+            case 1:
+           if(paintingOpened == 0) {
+    printf("You unscrew the painting and find a hidden drawer.\n");
+    printf("You took 1 Small Note.\n");
+    note1Found = 1;
+    paintingOpened = 1;
+}
+    else {
+    printf("The hidden drawer is empty.\n");
+}
+            break;
+            case 2:
+            printf("You went back.\n");
+            return;
+            break;
+            default:
+            printf("You just stood around.");
+            return;
+        }
+    }
+}
+void bed() {
+    while(1){
+    printf("\nThere's a huge bed in the middle of the room. Where do you check?\n1. Pillow\n2. Blanket\n3. Under the bed\n4. Go back\n = ");
+        scanf("%d", &bedc);
+        switch (bedc){
+            case 1:
+        printf("\nThere's nothing there.\n");
+            break;
+            case 2:
+        printf("\nThere's nothing there.\n");
+            break;
+            case 3:
+    if(note3Found == 0){
+        printf("You found a ripped note.\n");
+        note3Found = 1;
+    }
+    else{
+        printf("There's nothing under the bed.\n");
+    }
+    break;
+    case 4:
+    return;
+default:
+    printf("You just stood around.\n");
+    }
+    }
+}
+void vase(){
+    printf("There's a vase on top of a drawer.");
+    printf("\n\nFlip the vase?\n1. Yes\n2. No\n =");
+        scanf("%d", &vasec);
+        switch (vasec){
+        case 1:
+           if(vaseChecked == 0) {
+    printf("You flipped the vase. A torn note fell off.\n");
+    printf("You took 1 Torn Note.\n");
+    note4Found = 1;
+    vaseChecked = 1;
+}
+    else {
+    printf("The vase is empty.\n");
+}
+    break;
+    case 2:
+        printf("You went back.\n");
+        break;
+    default:
+        printf("You just stood around.");
+        return;
+}
+}
+void window(){
+  printf("\nYou check the window.\n");
+  printf("There is nothing here.\n");
+}
+void lamp(){
+     printf("\nThere's a lamp on top of a drawer.\nUpon closer inspection, there's a hidden paper inside of the lamp.\n");
+     if(lampChecked == 0) {
+    printf("You found a note.\n");
+    note5Found = 1;
+    lampChecked = 1;
+}
+    else{
+    printf("There's nothing inside the lamp.\n");
+}
+}
+void closet(){
+    printf("\nYou check the closet on the far side of the bedroom.\n");
+    while(1){
+    printf("\nAfter opening it, there are two main things that catches your eye:\n");
+    printf("\n1. Note on the side of the closet\n2. Small case\n3. Go back\n\nWhat would you like to inspect first??\n = ");
+    scanf("%d", &closetc);
+    switch (closetc){
+        case 1:
+        printf("\nA ripped newspaper clipping reads:");
+        printf("'...his deadliest one yet...'\n");
+        break;
+        case 2:
+        printf("\nThe case has a 4-letter lock.\n");
+        printf("\nEnter the code: \n");
+        scanf("%4s", code);
+        if(strcmp(code, "DADI") == 0){
+    if(caseOpened == 0){
+        printf("\nThe case clicks open!\n");
+        printf("Inside you find:\n");
+        printf("- Bedroom Key\n");
+        printf("- Folded Note\n");
+    hasKey = 1;
+    finalNoteFound = 1;
+    caseOpened = 1;
+    }
+    else{
+        printf("The case is empty.\n");
+    }
+}
+    else {
+    printf("\nThe lock doesn't budge.\n");
+}
+        break;
+        case 3:
+        return;
+    }
+}
+}
+void door(){
+    if(hasKey){
+    printf("You unlocked the door.\n");
+    printf("You escaped!\n");
+    exit(0);
+}
+else {
+    printf("\nThe door is locked.\n");
+}
+}
+void look()
+{
+    while(1){
+    printf("\nYou look around and see...\n1. Drawer\n2. Painting\n3. Bed\n4. Vase\n5. Window\n6. Lamp\n7. Closet\n8. Door\n9. Go Back\n\nWhat would you like to check?\n = ");
+    scanf("%d", &choice1);
+    switch (choice1){
+        case 1:
+        drawer();
+        break;
+        case 2:
+        paint();
+        break;
+        case 3:
+        bed();
+        break;
+        case 4:
+        vase();
+        break;
+        case 5:
+        window();
+        break;
+        case 6:
+        lamp();
+        break;
+        case 7:
+        closet();
+        break;
+        case 8:
+        door();
+        break;
+        case 9:
+        return;
+    }
+}
+}
+void inv()
+{
+    printf("\nYou checked your inventory.\n");
+    if(hasScrewdriver == 0 && note2Found == 0 && note1Found == 0 && note3Found == 0 && note4Found == 0 && note5Found == 0 && finalNoteFound == 0 && hasKey == 0){
+        printf("\nInventory is empty.\n");
+    }
+    if(hasScrewdriver){
+        printf("1. Screwdriver\n");
+    }
+    if(note2Found){
+        printf("2. Big Note\n");
+    }
+     if(note1Found){
+        printf("3. Small Note\n");
+    }
+    if(note3Found){
+    printf("4. Ripped Note\n");
+    }
+    if(note4Found){
+    printf("5. Torn Note\n");
+    }
+    if(note5Found){
+    printf("6. Cipher Note\n");
+    }
+    if(hasKey){
+    printf("7. Bedroom Key\n");
+    }
+    if(finalNoteFound){
+    printf("8. Folded Note\n");
+    }
+    printf("Choose an item: ");
+    scanf("%d", &invc);
+    switch (invc){
+        case 1:
+    if(hasScrewdriver){
+        printf("\nA small screwdriver.\n");
+        printf("Maybe it can remove screws.\n");
+    }
+    else{
+        printf("\nYou don't have that item.\n");
+    }
+    break;
+    case 2:
+    if(note2Found){
+        printf("\nThe note has a single letter:\n");
+        printf("A\n");
+    }
+    else{
+        printf("\nYou don't have that item.\n");
+    }
+    break;
+    case 3:
+    if(note1Found)
+    {
+        printf("\nThe note has a single letter:\n");
+        printf("F\n");
+    }
+    else
+    {
+        printf("\nYou don't have that item.\n");
+    }
+    break;
+    case 4:
+    if(note3Found)
+    {
+        printf("\nThe note has a single letter:\n");
+        printf("R\n");
+    }
+    else
+    {
+        printf("\nYou don't have that item.\n");
+    }
+    break;
+    case 5:
+    if(note4Found)
+    {
+        printf("\nThe note has a single letter:\n");
+        printf("T\n");
+    }
+    else
+    {
+        printf("\nYou don't have that item.\n");
+    }
+    break;
+   case 6:
+    if(note5Found) {
+        printf("\nThe note reads:\n");
+        printf("F = D\n");
+        printf("A = A\n");
+        printf("R = D\n");
+        printf("T = I\n");
+    }
+    else {
+        printf("\nYou don't have that item.\n");
+    }
+    break;
+    case 7:
+    if(hasKey)
+    {
+        printf("\nA small brass key.\n");
+        printf("It probably unlocks the bedroom door.\n");
+    }
+    else
+    {
+        printf("\nYou don't have that item.\n");
+    }
+    break;
+    case 8:
+    if(finalNoteFound){
+        printf("\nYou carefully unfold the paper.\n\n");
+        printf("It reads:\n\n");
+        printf("\"Dadi's fart killed her.\"\n");
+        printf("...\n");
+        printf("\nYou wish you hadn't read that.\n");
+    }
+    else{
+        printf("\nYou don't have that item.\n");
+    }
+    break;
+    default:
+    printf("You just stood around.");
+        return;
+    }
+}
+int main() {
+    printf("================================\n\nYou wake up in a locked bedroom.\nThe only way out is through the locked door.\nFind a way to escape.\n\n================================");
+    while(1){
+    printf("\nWhat would you like to do?\n1. Look around\n2. Check the door\n3. Check inventory\n4. Quit\n = ");
+    scanf("%d", &choice);
+    switch (choice){
+    case 1:
+    look();
+    break;
+    case 2:
+    door();
+    break;
+    case 3:
+    inv();
+    break;
+    case 4:
+    printf("\nYou'll never know the secrets lurking within...\n");
+    return 0;
+    break;
+    default:
+    printf("You just stood around.");
+    }
+    }
+    return 0;
+}
