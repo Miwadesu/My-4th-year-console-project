@@ -22,7 +22,7 @@ void drawer() {
         char screw[] = "Screwdriver";
         char *screw_ptr = screw;
         printf("1. %s\n", screw_ptr);
-        char note2[] = "Big Note";
+        char note2[] = "Small Note";
         char *note2_ptr = note2;
         printf("2. %s\n", note2_ptr);
         printf("You took both items.\n");
@@ -45,7 +45,7 @@ void paint(){
             case 1:
            if(paintingOpened == 0) {
     printf("You unscrew the painting and find a hidden drawer.\n");
-    printf("You took 1 Small Note.\n");
+    printf("You took 1 Big Note.\n");
     note1Found = 1;
     paintingOpened = 1;
 }
@@ -144,7 +144,7 @@ void closet(){
         printf("\nThe case has a 4-letter lock.\n");
         printf("\nEnter the code: \n");
         scanf("%4s", code);
-        if(strcmp(code, "DADI") == 0){
+        if(strcmp(code, "FART") == 0){
     if(caseOpened == 0){
         printf("\nThe case clicks open!\n");
         printf("Inside you find:\n");
@@ -222,10 +222,10 @@ void inv()
         printf("1. Screwdriver\n");
     }
     if(note2Found){
-        printf("2. Big Note\n");
+        printf("2. Small Note\n");
     }
      if(note1Found){
-        printf("3. Small Note\n");
+        printf("3. Big Note\n");
     }
     if(note3Found){
     printf("4. Ripped Note\n");
@@ -256,8 +256,8 @@ void inv()
     break;
     case 2:
     if(note2Found){
-        printf("\nThe note has a single letter:\n");
-        printf("A\n");
+        printf("\nshe's trApped.\n");
+        printf("What could this mean?\n");
     }
     else{
         printf("\nYou don't have that item.\n");
@@ -266,8 +266,8 @@ void inv()
     case 3:
     if(note1Found)
     {
-        printf("\nThe note has a single letter:\n");
-        printf("F\n");
+        printf("\nthe lamp Fell.\n");
+        printf("What could this mean?\n");
     }
     else
     {
@@ -277,8 +277,8 @@ void inv()
     case 4:
     if(note3Found)
     {
-        printf("\nThe note has a single letter:\n");
-        printf("R\n");
+        printf("\nno one Reported the incident...\n");
+        printf("What could this mean?\n");
     }
     else
     {
@@ -288,8 +288,8 @@ void inv()
     case 5:
     if(note4Found)
     {
-        printf("\nThe note has a single letter:\n");
-        printf("T\n");
+        printf("\nshe didn'T escape.\n");
+        printf("What could this mean?\n");
     }
     else
     {
@@ -299,10 +299,8 @@ void inv()
    case 6:
     if(note5Found) {
         printf("\nThe note reads:\n");
-        printf("F = D\n");
-        printf("A = A\n");
-        printf("R = D\n");
-        printf("T = I\n");
+        printf("\"The answer isn't hidden. Read what the clues spell.\"\n");
+        printf("\"The note was big, then small, then ripped, then torn.\"\n");
     }
     else {
         printf("\nYou don't have that item.\n");
