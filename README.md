@@ -16,10 +16,3 @@ My first C project, originally created in 4th year and later improved before sta
 * Additional mini-games
 
 This project represents the beginning of my programming journey.
-
-# UPDATE
-Fun console program turned into an escape room
-## Features
-* What I've relearned in my July-Works repo
-## Where to find the code file?
-[Click here to view the file](EscapeRoom)
